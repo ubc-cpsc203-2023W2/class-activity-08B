@@ -1,6 +1,5 @@
 
-from PIL import Image, ImageDraw
-from typing import List, Tuple
+from PIL import Image
 from dataclasses import dataclass, field
 import random
 
@@ -12,9 +11,9 @@ class center:
 @dataclass
 class centers:
 
-    ctrs: List[center] = field(default_factory=list)
+    ctrs: list[center] = field(default_factory=list)
 
-    def __init__(self,img:Image,density: float):
+    def __init__(self, img: Image, density: float):
         #when an object of type centers is declared, what should it look like? 
         # populate the list of centers using the given image
         
@@ -27,12 +26,12 @@ class centers:
         #TODO: find and append all the centres into a list
         pass
 
-    def distance(self,p1:Tuple[int,int],p2:Tuple[int,int])-> int:
+    def distance(self, p1: tuple[int,int], p2: tuple[int,int]) -> int:
         # TODO: calculate the squared euclidean distance given two points
         pass
         
 
-    def nearest_center_colour(self, pt:Tuple[int,int])-> Tuple[int,int,int]:
+    def nearest_center_colour(self, pt: tuple[int,int]) -> tuple[int,int,int]:
         # given a point, returns the colour of the closest center from the list
         
         best_center = self.ctrs[0]

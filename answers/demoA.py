@@ -1,7 +1,7 @@
 # Class08B Demos
 
 from PIL import Image
-import voronoi_slow as vs
+import answer_voronoi_slow as vs
 
 ## Steps to produce Voronoi Art
 
@@ -9,7 +9,7 @@ import voronoi_slow as vs
 im = Image.open("parkPhoto.jpg")
 
 # TODO: 2. set a density and choose the centers
-density = 0.01 # a density of points, represents how detailed the art is
+density = 0.001 # a density of points, represents how detailed the art is.
 ctrs = vs.centers(im, density)
 
 # TODO: 3a. prepare the output image
@@ -18,6 +18,7 @@ imOut = Image.new('RGB',(im.width,im.height),(255,255,255))
 # TODO: 3b. iterate over pixels, setting the color of the output image
 pix = imOut.load()
 for x in range(imOut.width):
+    print(f'Working on column {x} of {imOut.width}.')  # So we can see how fast the algorithm is running.
     for y in range(imOut.height):
         pix[x,y] = ctrs.nearest_center_colour((x,y))
         
@@ -34,4 +35,4 @@ for c in ctrs.ctrs:
                 pix[i,j] = (255,0,0)
 
 # TODO: 5b. Save the new output image
-# imOut.save('outputs/vorPark02.jpg')
+imOut.save('outputs/vorPark02.jpg')
